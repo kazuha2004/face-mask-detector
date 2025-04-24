@@ -96,7 +96,7 @@ class Face_Recognition:
             clf.read("classifier.xml")
             video_cap = cv2.VideoCapture(0)
 
-            conn = mysql.connector.connect(host="localhost", username="root", password="Sahil30@", database="face_recognition")
+            conn = mysql.connector.connect(host="localhost", username="root", password="8055", database="face_recognition")
             cursor = conn.cursor()
             cursor.execute("SELECT Student_id, Name, Roll, Dep FROM student")
             all_students = cursor.fetchall()
@@ -115,8 +115,8 @@ class Face_Recognition:
                     student_id, predict = clf.predict(gray[y:y + h, x:x + w])
                     confidence = int((100 * (1 - predict / 300)))
 
-                    if confidence > 75:
-                        conn = mysql.connector.connect(host="localhost", username="root", password="Sahil30@", database="face_recognition")
+                    if confidence > 77:
+                        conn = mysql.connector.connect(host="localhost", username="root", password="8055", database="face_recognition")
                         cursor = conn.cursor()
 
                         cursor.execute(f"SELECT Name, Roll, Dep FROM student WHERE Student_id={student_id}")
